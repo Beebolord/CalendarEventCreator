@@ -1,3 +1,4 @@
+###Calendar Event Creator
 Overengineered solution for serial tardiness. 
 Features : 
   - Parse data from the acual website using Scrawly(Kotlin Web Scraper) stored in json
