@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "157679063507",
+    "firebase_url": "https://hermes-1e764-default-rtdb.firebaseio.com",
+    "project_id": "hermes-1e764",
+    "storage_bucket": "hermes-1e764.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157679063507:android:0cc4b7fd8290db8c845f26",
+        "android_client_info": {
+          "package_name": "com.paslertc.hermes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157679063507-45jojfdmqd5eaoialsvi3qujabid3p2i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeUPht91w5qITBtjQ_SUqPi-tf7Ji5pOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "157679063507-45jojfdmqd5eaoialsvi3qujabid3p2i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
