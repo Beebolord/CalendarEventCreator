@@ -12,6 +12,8 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from dataclasses import dataclass
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/calendar.events.readonly']
@@ -57,7 +59,7 @@ def main():
                 'useDefault': False,
                 'overrides': [
                     {'method': 'email', 'minutes': 19 * 60},
-                    {'method': 'popup', 'minutes': 19*60},
+                    {'method': 'popup', 'minutes': 19 * 60},
                     {'method': 'popup', 'minutes': 5 * 60},
                     {'method': 'popup', 'minutes': 6 * 60},
                     {'method': 'popup', 'minutes': 7 * 60},
@@ -113,20 +115,20 @@ def main():
 
 
 def JsonParser():
-    global day, start, poste, end, month, tomorrowCalendarEvent, todayCalendarEvent, after_tomorrowCalendarEvent
+    global day, start, poste, end, month, tomorrowCalendarEvent, todayCalendarEvent,  after_tomorrowCalendarEvent
     f = open(r"C:\Users\ismae\IdeaProjects\ColorfulApi\src\main\resources\static\file.json")
     holder = json.loads(f.read())
     today = date.today()
     tomorrow = today + datetime.timedelta(days=1)
     after_tomorrow = today + datetime.timedelta(days=2)
-
     d1 = today.strftime("%d")
     d2 = tomorrow.strftime("%d")
     d3 = after_tomorrow.strftime("%d")
+
     for x in holder:
-        if x["date"][0:2] == d1:
+        if x["date"][0:2] == d1 :
             day1 = x["date"][0:2]
-            poste1 = x["job"]
+            poste1 =  "Tache" + " " + x["job"][7:(len(x["job"]))]
             start1 = x["hours"][0:5]
             end1 = x["hours"][8:13]
             month1 = str(strptime(x["date"][3:6], '%b').tm_mon)
@@ -143,7 +145,7 @@ def JsonParser():
             print(day2, poste2, start2)
         if x["date"][0:2] == d3:
             day3 = x["date"][0:2]
-            poste3 = x["job"]
+            poste3 = "Tache"+x["job"][8:(len(x["job"]))]
             start3 = x["hours"][0:5]
             end3 = x["hours"][8:13]
             month3 = str(strptime(x["date"][3:6], '%b').tm_mon)
@@ -160,9 +162,20 @@ def JsonParser():
     return calendarShiftEvents
 
 
-if __name__ == '__main__':
-    print(JsonParser()[0].summary)
-    print(JsonParser()[1].summary)
-    print(JsonParser()[2].summary)
+def reader():
+    f = open(r"C:\Users\ismae\IdeaProjects\ColorfulApi\src\main\resources\static\file.json")
+    f.read()
+    print(f.read())
 
-    main()
+
+def Ada() :
+    options = Options()
+    options.headless = True
+    driver = webdriver.Chrome("/usr/bin/chromedriver", options=options)
+    driver.get("https://virtuo.ciussscn.rtss.qc.ca/portals/home/app/login")
+    print(driver.title)
+
+    driver.quit()
+if __name__ == '__main__':
+    Ada()
+
